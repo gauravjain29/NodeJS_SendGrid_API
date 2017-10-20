@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "sendgridsample.js",
   "dependencies": {
+    "@sendgrid/mail": "^6.1.4",
     "express": "^4.16.2",
     "sendgrid": "^5.2.3"
   },
