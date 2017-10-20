@@ -3,7 +3,7 @@ var app = express();
 var fs = require("fs");
 
 app.get('/listUsers', function (req, res) {
-
+console.log('In here');
 const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey(process.env.SendGrid_API_Key);
 console.log('here');
