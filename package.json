@@ -1,0 +1,23 @@
+{
+  "name": "testproj",
+  "version": "1.0.0",
+  "description": "",
+  "main": "sendgridsample.js",
+  "dependencies": {
+    "express": "^4.16.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gauravjain29@github.com/gauravjain29/NodeJS_SendGrid_API.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gauravjain29/NodeJS_SendGrid_API/issues"
+  },
+  "homepage": "https://github.com/gauravjain29/NodeJS_SendGrid_API#readme"
+}
