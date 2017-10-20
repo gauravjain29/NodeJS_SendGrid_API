@@ -15,7 +15,6 @@ const msg = {
 };
 sgMail.send(msg);
        res.end( 'SUCCESS' );
-   });
 })
 app.listen(process.env.PORT || 3000);
 
