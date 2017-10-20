@@ -4,6 +4,7 @@ var fs = require("fs");
 
 app.get('/listUsers', function (req, res) {
 console.log('In here');
+res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5000');
 //const sgMail = require('@sendgrid/mail');
 //sgMail.setApiKey(process.env.SendGrid_API_Key);
 console.log('here');
