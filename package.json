@@ -1,7 +1,6 @@
 {
   "name": "testproj",
   "version": "1.0.0",
-  "description": "",
   "main": "sendgridsample.js",
   "dependencies": {
     "express": "^4.16.2"
@@ -19,5 +18,7 @@
   "bugs": {
     "url": "https://github.com/gauravjain29/NodeJS_SendGrid_API/issues"
   },
-  "homepage": "https://github.com/gauravjain29/NodeJS_SendGrid_API#readme"
+  "homepage": "https://github.com/gauravjain29/NodeJS_SendGrid_API#readme",
+  "keywords": [],
+  "description": ""
 }
