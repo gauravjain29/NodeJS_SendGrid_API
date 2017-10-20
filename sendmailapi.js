@@ -5,7 +5,9 @@ var fs = require("fs");
 app.get('/listUsers', function (req, res) {
 
 const sgMail = require('@sendgrid/mail');
-sgMail.setApiKey('');
+sgMail.setApiKey(process.env.SendGrid_API_Key);
+console.log('here');
+console.log(process.env.SendGrid_API_Key);
 const msg = {
   to: 'gauravjain.sfdev@gmail.com',
   from: 'test@example.com',
