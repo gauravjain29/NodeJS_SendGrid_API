@@ -9,16 +9,23 @@ app.use(bodyParser.urlencoded({ extended: false }))
  
 // parse application/json
 app.use(bodyParser.json())
- 
+
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 // app.use(function (req, res) {
-//   res.setHeader('Content-Type', 'text/plain')
+//   res.setHeader('Content-Type', 'application/json')
+//   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5000');
 //   res.write('you posted:\n')
 //   res.end(JSON.stringify(req.body, null, 2))
-// })
+//})
 
 app.post('/sendEmail', function (req, res) {
-res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5000');
 
+//res.setHeader('Access-Control-Allow-Origin', '*');
 console.log(req.body + req.body.senderName + req.body.senderEmail + req.body.msg);
 var senderName = req.body.senderName;
 var senderEmail = req.body.senderEmail;
