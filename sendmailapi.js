@@ -19,6 +19,7 @@ app.use(bodyParser.json())
 app.post('/sendEmail', function (req, res) {
 res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5000');
 
+console.log(req.body + req.body.senderName + req.body.senderEmail + req.body.msg);
 var senderName = req.body.senderName;
 var senderEmail = req.body.senderEmail;
 var message = req.body.msg;
