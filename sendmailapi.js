@@ -2,19 +2,36 @@ var express = require('express');
 var app = express();
 var fs = require("fs");
 
-app.get('/listUsers', function (req, res) {
-console.log('In here');
+var bodyParser = require('body-parser');
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+ 
+// parse application/json
+app.use(bodyParser.json())
+ 
+// app.use(function (req, res) {
+//   res.setHeader('Content-Type', 'text/plain')
+//   res.write('you posted:\n')
+//   res.end(JSON.stringify(req.body, null, 2))
+// })
+
+app.post('/sendEmail', function (req, res) {
 res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5000');
+
+var senderName = req.body.senderName;
+var senderEmail = req.body.senderEmail;
+var message = req.body.msg;
+
 const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey(process.env.SendGrid_API_Key);
-console.log('here');
 console.log(process.env.SendGrid_API_Key);
 const msg = {
   to: 'gauravjain.sfdev@gmail.com',
-  from: 'test@example.com',
-  subject: 'Sending with SendGrid is Fun',
-  text: 'and easy to do anywhere, even with Node.js',
-  html: '<strong>and easy to do anywhere, even with Node.js</strong>',
+  from: senderEmail,
+  subject: senderName + ' has sent a message',
+  text: message,
+  html: '<p>'+message+'</p>',
 };
 sgMail.send(msg);
        res.end( 'SUCCESS' );
