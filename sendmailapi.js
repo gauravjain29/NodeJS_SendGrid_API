@@ -16,33 +16,34 @@ app.use(function(req, res, next) {
   next();
 });
 
-// app.use(function (req, res) {
-//   res.setHeader('Content-Type', 'application/json')
-//   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5000');
-//   res.write('you posted:\n')
-//   res.end(JSON.stringify(req.body, null, 2))
-//})
 
 app.post('/sendEmail', function (req, res) {
+	try {
+		console.log(req.body + req.body.senderName + req.body.senderEmail + req.body.msg);
+		var senderName = req.body.senderName;
+		var senderEmail = req.body.senderEmail;
+		var message = req.body.msg;
 
-//res.setHeader('Access-Control-Allow-Origin', '*');
-console.log(req.body + req.body.senderName + req.body.senderEmail + req.body.msg);
-var senderName = req.body.senderName;
-var senderEmail = req.body.senderEmail;
-var message = req.body.msg;
-
-const sgMail = require('@sendgrid/mail');
-sgMail.setApiKey(process.env.SendGrid_API_Key);
-console.log(process.env.SendGrid_API_Key);
-const msg = {
-  to: 'gauravjain.sfdev@gmail.com',
-  from: senderEmail,
-  subject: senderName + ' has sent a message',
-  text: message,
-  html: '<p>'+message+'</p>',
-};
-sgMail.send(msg);
-       res.end( 'SUCCESS' );
+		const sgMail = require('@sendgrid/mail');
+		sgMail.setApiKey(process.env.SendGrid_API_Key);
+		console.log(process.env.SendGrid_API_Key);
+		const msg = {
+		  to: 'gauravjain.sfdev@gmail.com',
+		  from: senderEmail,
+		  subject: senderName + ' has sent a message',
+		  text: message,
+		  html: '<p>'+message+'</p>',
+		};
+		sgMail.send(msg).then(function(result) {
+	        res.end( 'SUCCESS' );
+	    }, function(err) {
+	        res.end( 'FAILURE' );
+	    });
+	}
+	catch(ex)
+	{
+		res.end( 'FAILURE' );
+	}
 })
 app.listen(process.env.PORT || 3000);
 
